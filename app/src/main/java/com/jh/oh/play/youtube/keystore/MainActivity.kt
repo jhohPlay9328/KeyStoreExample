@@ -27,12 +27,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnDecode.setOnClickListener {
-            KeyStoreUtils.decrypt(binding.textEncode.text.toString()).apply {
-                Snackbar.make(
-                    binding.root,
-                    this,
-                    Snackbar.LENGTH_SHORT
-                ).show()
+            if(binding.textEncode.text.toString().isNotEmpty()) {
+                KeyStoreUtils.decrypt(binding.textEncode.text.toString()).apply {
+                    Snackbar.make(
+                        binding.root,
+                        this,
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
     }
